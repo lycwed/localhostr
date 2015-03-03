@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>HOST'R</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="author" content="Yves LECHEVALIER" />
+
+    <meta name="apple-mobile-web-app-title" content="Host'r" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" type="image/png" href="./assets/images/icons/Icon-60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/icons/Icon-60@2x.png"/>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <!-- endinject -->
+
+  </head>
+
+  <body ng-app="localhostr">
+    <header>
+      <h1>LOCALHOST<span>R</span></h1>
+    </header>
+
+    <messages-handler success="$root.success" fullscreen="true"></messages-handler>
+
+    <!-- CONTENT -->
+    <div ui-view="interface"></div>
+
+    <messages-handler errors="$root.errors" fullscreen="true"></messages-handler>
+
+    <script type="text/javascript">
+      var API_URL = '<?php echo $this->getScriptUrl() ?>';
+    </script>
+
+    <!-- lib:js -->
+    <script src="./assets/js/lib/angular.min.js"></script>
+    <script src="./assets/js/lib/angular-ui-router.min.js"></script>
+    <script src="./assets/js/lib/angular-translate.min.js"></script>
+    <script src="./assets/js/lib/angular-translate-loader-static-files.min.js"></script>
+    <script src="./assets/js/lib/angular-route.min.js"></script>
+    <script src="./assets/js/lib/angular-material.min.js"></script>
+    <script src="./assets/js/lib/angular-aria.min.js"></script>
+    <script src="./assets/js/lib/angular-animate.min.js"></script>
+    <!-- endinject -->
+
+    <!-- core:js -->
+    <script src="./assets/js/core/app.js"></script>
+    <script src="./assets/js/core/classes.js"></script>
+    <script src="./assets/js/core/config.js"></script>
+    <script src="./assets/js/core/directives.js"></script>
+    <script src="./assets/js/core/filters.js"></script>
+    <script src="./assets/js/core/services.js"></script>
+    <script src="./assets/js/controller/ApplicationCtrl.js"></script>
+    <script src="./assets/js/controller/InstallerCtrl.js"></script>
+    <script src="./assets/js/controller/PhpInfoCtrl.js"></script>
+    <script src="./assets/js/controller/ProjectsCtrl.js"></script>
+    <!-- endinject -->
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<nav class="button-list-right">
+    <a ui-sref="installer" class="button-icon" title="change configuration">
+        <i class="icon-cog"></i>
+    </a>
+    <a ui-sref="phpinfo" class="button-icon" title="PHP infos">
+        <i class="icon-info"></i>
+    </a>
+    <a href="{{ item.href }}" class="button-icon" title="{{ item.title }}" target="blank" ng-repeat="item in data.options">
+        <i class="{{ item.icon }}"></i>
+    </a>
+</nav>

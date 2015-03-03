@@ -1,0 +1,18 @@
+{
+    "PROJECTS_TITLE": "Your projects",
+    "ABOUT_THE_APP": "About the app",
+    "ABOUT_THE_MENU": "About the menu",
+    "ABOUT_THE_RESEARCH": "About the research",
+    "PATH_TO_IGNORE": "Root files or folders to ignore",
+    "DISPLAY_MIN_CHARS": "Display results after {{ chars }} chars",
+    "DISPLAY_MIN_TIME": "Display results after {{ time }} ms",
+    "SAVE": "Save",
+    "BACK_TO_PROJECTS": "Back to projects",
+    "IS_REQUIRED": "{{ label }} is required",
+    "FORM_UPDATE_SUCCESS":"Informations update have been done !",
+    "FORM_UPDATE_FAILED":"Informations update have failed",
+    "ITEMS_NB":"{{ items }} item(s)",
+    "SIZE":"size",
+    "ACCESS_TO":"Access to {{ item }}",
+    "NO_ITEMS_FOUND":"No file or folder found..."
+}

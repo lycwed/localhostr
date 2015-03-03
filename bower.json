@@ -1,0 +1,22 @@
+{
+  "name": "LOCALHOSTR",
+  "version": "0.0.0",
+  "description": "Tool to list localhost projects in a pretty way",
+  "authors": [
+    "Yves Lechevalier"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.7.1",
+    "angular-translate-loader-static-files": "~2.5.2",
+    "angular-translate": "~2.5.2",
+    "angular-ui-router": "~0.2.13"
+  }
+}

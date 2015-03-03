@@ -1,0 +1,55 @@
+
+// FORM
+
+label,
+button,
+input[type=url],
+input[type=text] {
+  font-size: 1em;
+}
+
+form {
+  ::-webkit-input-placeholder {
+    color: $white-op;
+  }
+
+  :-moz-placeholder {
+    color: $white-op;
+    opacity: 1;
+  }
+
+  ::-moz-placeholder {
+    color: $white-op;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    color: $white-op;
+  }
+
+  .button-cancel,
+  .button-submit {
+    align: {
+      self: flex-end;
+    }
+    padding: $gutter-small;
+  }
+
+  fieldset {
+    margin-top: $gutter-large;
+
+    legend {
+      font-size: 1.8em;
+    }
+
+    input[type=url],
+    input[type=text] {
+      color: $light;
+      width: 100%;
+      padding: $gutter-small;
+      background: {
+        color: $black-op;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<nav class="button-list-right container" id="options">
+    <div class="button-icon has-popover-bottom" ng-class="{ 'show': popover === 'search' }">
+        <a ng-click="togglePopover('search');" class="popover-trigger" title="change configuration">
+            <i class="icon-search"></i>
+        </a>
+        <div class="item-popover-rounded">
+            <div class="item input-text">
+                <input type="text" ng-model="data.search" id="inputSearch" placeholder="{{ 'SEARCH_INF0' | translate }}">
+            </div>
+        </div>
+    </div>
+
+    <a ui-sref="installer" class="button-icon" title="change configuration">
+        <i class="icon-cog"></i>
+    </a>
+    <a ui-sref="phpinfo" class="button-icon" title="PHP infos">
+        <i class="icon-info"></i>
+    </a>
+    <a href="{{ item.href }}" class="button-icon" title="{{ item.title }}" target="blank" ng-repeat="item in data.options">
+        <i class="{{ item.icon }}"></i>
+    </a>
+</nav>
+
+<nav>
+    <ul class="list-inline">
+        <li class="item">
+            <i class="icon-sitemap"></i>
+            <a ui-sref="projects({ path: 'all' })" title="{{ 'ACCESS_TO' | translate: { item: item.name } }}" ng-if="! isEmpty() && ! isSearching()">
+                {{ 'PROJECTS_TITLE' | translate }}
+            </a>
+            <span ng-if="isEmpty() && ! isSearching()">{{ 'PROJECTS_TITLE' | translate }}</span>
+            <span ng-if="isSearching();">{{ 'RESEARCH_TITLE' | translate }} : {{ 'ITEMS_FOUND' | translate: { items: data.research.results_nb } }}</span>
+        </li>
+        <li class="item" ng-repeat="item in data.breadcrumb" ng-if="! isSearching();">
+            <i class="icon-angle-right"></i>
+            <a ui-sref="projects({ path: item.path })" title="{{ 'ACCESS_TO' | translate: { item: item.name } }}" ng-if="! $last">
+                {{ item.name }}
+            </a>
+            <span ng-if="$last">{{ item.name }}</span>
+        </li>
+    </ul>
+</nav>
+
+<section>
+
+    <search-results collection="data.projects" ng-if="! isSearching();" loading="loading"></search-results>
+
+    <search-results collection="data.research.results" ng-if="isSearching();" loading="loading"></search-results>
+
+</section>

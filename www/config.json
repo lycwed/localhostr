@@ -1,0 +1,20 @@
+{
+    "app": {
+        "path": "/Users/brahmanimal/Sites",
+        "installed": true,
+        "ignores": [
+            "LOCALHOSTR"
+        ]
+    },
+    "menu": {
+        "php_my_admin": {
+            "title": "PHP my admin",
+            "href": "",
+            "icon": "icon-database"
+        }
+    },
+    "research": {
+        "chars": "2",
+        "time": "1000"
+    }
+}

@@ -1,0 +1,21 @@
+
+/* TRANSITIONS */
+
+.tr, .tr-all * {
+  -webkit-transition: all $transition_style;
+     -moz-transition: all $transition_style;
+      -ms-transition: all $transition_style;
+       -o-transition: all $transition_style;
+          transition: all $transition_style;
+}
+
+// transition on items
+@each $item in (background, opacity, color, width, height) {
+  .tr-#{$item} {
+    -webkit-transition: $item $transition_style;
+       -moz-transition: $item $transition_style;
+        -ms-transition: $item $transition_style;
+         -o-transition: $item $transition_style;
+            transition: $item $transition_style;
+  }
+}
