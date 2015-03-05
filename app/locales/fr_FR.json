@@ -18,5 +18,11 @@
     "RESEARCH_TITLE":"Resultats de recherche",
     "SEARCH_INF0":"-s commence par, -i casse sensible, -f fichiers seuls, -fd dossiers seuls",
     "ITEMS_FOUND":"{{ items }} élément(s) trouvé(s)",
-    "LOADING_IN_PROGRESS":"Chargement en cours..."
+    "LOADING_IN_PROGRESS":"Chargement en cours...",
+    "FRENCH":"Français",
+    "ENGLISH":"Anglais",
+    "CHANGE_CONFIGURATION":"Modifier la configuration",
+    "SEARCH_ITEM":"Chercher un projet, un dossier ou un fichier",
+    "PHP_INFOS":"Infomations sur la version de PHP",
+    "BACK_TO_PROJECTS":"Back to projects"
 }

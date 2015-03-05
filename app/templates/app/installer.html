@@ -1,8 +1,23 @@
+
+<messages-handler success="$root.success" fullscreen="true"></messages-handler>
+
+<nav class="container" id="options">
+    <a ui-sref="app.projects({ path: 'all' })" class="button-icon button-rounded" title="{{ 'BACK_TO_PROJECTS' | translate }}">
+        <i class="icon-left-big"></i>
+    </a>
+</nav>
+
 <section class="col">
     <form ng-submit="submit();" class="container">
         <fieldset>
             <legend class="item">{{ 'ABOUT_THE_APP' | translate }}</legend>
 
+            <div class="item input-select icon-down-open" require-data="language">
+                <select ng-model="data.app.language">
+                    <option value="">Choose in list</option>
+                    <option value="{{ language.value }}" ng-selected="language.value === data.app.language" ng-repeat="language in languages">{{ language.label | translate }}</option>
+                </select>
+            </div>
             <input-tagger placeholder="{{ fields.app.ignores.label | translate }}" collection="data.app.ignores"></input-tagger>
         </fieldset>
 

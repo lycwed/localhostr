@@ -45,8 +45,7 @@ app
     templateUrl: 'directives/search-results.html',
     controller: ['$scope', '$state', function ($scope, $state) {
       $scope.open = function(item) {
-        console.log(item);
-        $state.go('projects', {
+        $state.go('app.projects', {
             'path': item.path
         });
       };

@@ -3,6 +3,7 @@
 
 label,
 button,
+select,
 input[type=url],
 input[type=text] {
   font-size: 1em;
@@ -39,7 +40,8 @@ form {
     margin-top: $gutter-large;
 
     legend {
-      font-size: 1.8em;
+      font-size: 40px;
+      line-height: 40px;
     }
 
     input[type=url],

@@ -1,5 +1,16 @@
 {
+    "languages": [
+        {
+            "label": "ENGLISH",
+            "value": "en_US"
+        },
+        {
+            "label": "FRENCH",
+            "value": "fr_FR"
+        }
+    ],
     "app": {
+        "language": "fr",
         "path": "",
         "installed": false,
         "ignores": [

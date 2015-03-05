@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('localhostr', ['ui.router', 'ngMaterial', 'pascalprecht.translate']);
+var app = angular.module('localhostr', ['ui.router', 'pascalprecht.translate']);
 
 app
 
@@ -8,31 +8,43 @@ app
   function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider
-      .when('', '/projects')
-      .when('/projects', '/projects/all')
-      .otherwise('/projects');
+      .when('/app/projects/', '/app/projects/all')
+      .otherwise('/app/projects/all');
 
     $stateProvider
-      .state('projects', {
-        url: '/projects/:path',
+      .state('app', {
+        abstract: true,
+        url: '/app',
         resolve: {
           Installer: function(AppResource) {
             return AppResource.get('installer');
           }
         },
         views: {
-          'interface': {
-            templateUrl: 'templates/app/projects.html',
-            controller: 'ProjectsCtrl'
+          'app': {
+            templateUrl: 'templates/app.html',
+            controller: 'ApplicationCtrl'
           }
         }
       })
-      .state('installer', {
+      .state('app.projects', {
+        url: '/projects/:path',
+        views: {
+          'interface': {
+            templateUrl: 'templates/app/projects.html',
+            controller: 'ProjectsCtrl'
+          },
+          'breadcrumb@app.projects': {
+            templateUrl: 'templates/app/modules/breadcrumb.html',
+          },
+          'options@app.projects': {
+            templateUrl: 'templates/app/modules/options.html',
+          }
+        }
+      })
+      .state('app.installer', {
         url: '/installer',
         resolve: {
-          Installer: function(AppResource) {
-            return AppResource.get('installer');
-          },
           Form: function(FormChecker) {
             return FormChecker;
           }
@@ -69,9 +81,7 @@ app
       'suffix': '.json'
     });
 
-    $translateProvider.preferredLanguage('fr_FR');
-
-    // $translateProvider.uses('fr_FR');
+    $translateProvider.preferredLanguage('en_US');
   }
 ])
 

@@ -28,10 +28,8 @@
       <h1>LOCALHOST<span>R</span></h1>
     </header>
 
-    <messages-handler success="$root.success" fullscreen="true"></messages-handler>
-
     <!-- CONTENT -->
-    <div ui-view="interface"></div>
+    <div ui-view="app"></div>
 
     <messages-handler errors="$root.errors" fullscreen="true"></messages-handler>
 
@@ -40,14 +38,10 @@
     </script>
 
     <!-- lib:js -->
-    <script src="./assets/js/lib/angular.min.js"></script>
-    <script src="./assets/js/lib/angular-ui-router.min.js"></script>
-    <script src="./assets/js/lib/angular-translate.min.js"></script>
-    <script src="./assets/js/lib/angular-translate-loader-static-files.min.js"></script>
-    <script src="./assets/js/lib/angular-route.min.js"></script>
-    <script src="./assets/js/lib/angular-material.min.js"></script>
-    <script src="./assets/js/lib/angular-aria.min.js"></script>
-    <script src="./assets/js/lib/angular-animate.min.js"></script>
+    <script src="./assets/js/lib/angular.js"></script>
+    <script src="./assets/js/lib/angular-ui-router.js"></script>
+    <script src="./assets/js/lib/angular-translate.js"></script>
+    <script src="./assets/js/lib/angular-translate-loader-static-files.js"></script>
     <!-- endinject -->
 
     <!-- core:js -->

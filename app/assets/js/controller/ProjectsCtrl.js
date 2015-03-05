@@ -33,11 +33,8 @@ app.controller('ProjectsCtrl', ['$scope', '$state', '$timeout', 'AppResource', '
         };
         $scope.data = {
             projects: [],
-            research: {
-                // options: {
-                //     debounce: parseInt(research.time)
-                // }
-            },
+            research: {},
+            options: Installer.data.response.menu,
             breadcrumb: realPaths
         };
 

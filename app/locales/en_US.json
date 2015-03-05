@@ -18,5 +18,11 @@
     "RESEARCH_TITLE":"Research results",
     "SEARCH_INF0":"-s begin with, -i case sensitive, -f files only, -fd folders only",
     "ITEMS_FOUND":"{{ items }} item(s) found",
-    "LOADING_IN_PROGRESS":"Loading in progress..."
+    "LOADING_IN_PROGRESS":"Loading in progress...",
+    "FRENCH":"French",
+    "ENGLISH":"English",
+    "CHANGE_CONFIGURATION":"Change configuration",
+    "SEARCH_ITEM":"Search a project, a folder or a file",
+    "PHP_INFOS":"Infomations on PHP version",
+    "BACK_TO_PROJECTS":"Revenir aux projets"
 }

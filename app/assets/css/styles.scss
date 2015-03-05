@@ -1,26 +1,54 @@
 
 // GENERAL STYLES
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 980px) {
   header {
     h1 {
       font-size: 2em;
     }
   }
-}
+  .list-inline {
+    margin-bottom: $gutter-medium;
 
-@media screen and (min-width: 680px) and (max-width: 980px) {
-  header {
-    h1 {
-      font-size: 5em;
+    .item {
+      display: block;
+    }
+    .item {
+      margin-left: 20px;
+
+      &:first-child {
+        margin-left: 0px;
+      }
     }
   }
 }
+
+// @media screen and (min-width: 680px) and (max-width: 980px) {
+//   header {
+//     h1 {
+//       font-size: 5em;
+//     }
+//   }
+//   .list-inline {
+//     .item {
+//       display: block;
+
+//       &:first-child {
+//         margin-left: 0px;
+//       }
+//     }
+//   }
+// }
 
 @media screen and (min-width: 980px) {
   header {
     h1 {
       font-size: 5em;
+    }
+  }
+  .list-inline {
+    .item {
+      display: inline-block;
     }
   }
 }
@@ -159,6 +187,20 @@ header {
 
 form {
   fieldset {
+    .input-select {
+      select {
+        width: 100%;
+        padding: 10px;
+      }
+      &::before {
+        position: absolute;
+        color: $dark;
+        width: $line-height + ($gutter-small*2);
+        height: $line-height + ($gutter-small*2);
+        line-height: $line-height + ($gutter-small*2);
+        right: 0px;
+      }
+    }
     .input-range {
       width: 100%;
       padding: $gutter-small;
@@ -347,30 +389,44 @@ form {
     }
   }
 
-  .button-icon {
-    &:first-child {
-      border-radius: $gutter-large 0 0 $gutter-large;
-    }
-    &:last-child {
-      border-radius: 0 $gutter-large $gutter-large 0;
+  &.button-rounded {
+    .button-icon {
+      &:first-child {
+        border-radius: $gutter-large 0 0 $gutter-large;
+      }
+      &:last-child {
+        border-radius: 0 $gutter-large $gutter-large 0;
+      }
     }
   }
 }
 
 .button-icon {
+  float: left;
   display: inline-block;
   width: $inline-height / 2;
   height: $inline-height / 2;
   line-height: $inline-height / 2;
   text-align: center;
   background-color: $white-op-thin;
+
+  &.button-rounded {
+    border-radius: $gutter-large;
+  }
+}
+
+.button-right {
+  justify: {
+    content: flex-end;
+  }
 }
 
 .button-list-right {
+  @extend .button-right;
   @extend .button-list;
 
-  justify: {
-    content: flex-end;
+  &.button-rounded {
+    @extend .button-list-rounded;
   }
 
   button,
@@ -483,8 +539,6 @@ form {
   line-height: $inline-height;
 
   .item {
-    display: inline-block;
-
     a {
       margin-right: 5px;
       opacity: .6;

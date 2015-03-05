@@ -8,6 +8,7 @@ var jshint  = require('gulp-jshint');
 var conUtil = require('gulp-concat-util');
 var flatten = require('gulp-flatten');
 var filesort = require('gulp-angular-filesort');
+var bowerFiles = require('main-bower-files');
 
 var paths = {
   scss: ['./app/assets/css/frmk/*.scss', './app/assets/css/*.scss'],
@@ -23,15 +24,7 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('lib_js', function() {
-  return gulp.src('./bower_components/angular/angular.min.js')
-             .pipe(gulp.dest('./app/assets/js/lib/'));
-
-  return gulp.src('./bower_components/**/*.min.js.map')
-             .pipe(flatten())
-             .pipe(gulp.dest('./app/assets/js/lib/'));
-
-  return gulp.src('./bower_components/**/angular*.min.js')
-             .pipe(flatten())
+  return gulp.src(bowerFiles())
              .pipe(gulp.dest('./app/assets/js/lib/'));
 });
 
@@ -144,13 +137,13 @@ function getRelPath(scope, path) {
 function injectToIndex(scope) {
   setTimeout(function() {
     // inject css, lib js, core js
-    return gulp.src('./' + scope + '/templates/index.html')
+    return gulp.src('./' + scope + '/templates/index.phtml')
                .pipe(inject(gulp.src('./' + scope + '/assets/css/*.css', {read: false}), {
                  transform: function (filePath) {
                    return '<link rel="stylesheet" href="' + getRelPath(scope, filePath) + '">';
                  }
                }))
-               .pipe(inject(gulp.src('./' + scope + '/assets/js/lib/*.js', {read: false}).pipe(filesort()), {
+               .pipe(inject(gulp.src('./' + scope + '/assets/js/lib/*.js').pipe(filesort()), {
                  name: 'lib',
                  transform: function (filePath) {
                    return '<script src="' + getRelPath(scope, filePath) + '"></script>';

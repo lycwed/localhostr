@@ -5,6 +5,7 @@ app.controller('InstallerCtrl', ['$scope', '$rootScope', '$state', 'Installer', 
         $scope.data = {};
         $scope.fields = {
             app: {
+                language: { required: false, label:'USER_LANGUAGE', value: "" },
                 ignores: { required: false, label:'PATH_TO_IGNORE', value: [] }
             },
             research: {
@@ -31,6 +32,7 @@ app.controller('InstallerCtrl', ['$scope', '$rootScope', '$state', 'Installer', 
             console.log(form);
             if (form.isValid) {
                 AppResource.update('installer', form.values).then(function() {
+                    $state.reload();
                     $rootScope.success = [
                         {
                             content: 'FORM_UPDATE_SUCCESS',
@@ -51,8 +53,8 @@ app.controller('InstallerCtrl', ['$scope', '$rootScope', '$state', 'Installer', 
         };
 
         if (Installer.status === 200) {
+            $scope.languages = Installer.data.response.languages;
             Form.setData($scope.data, $scope.fields, Installer.data.response);
-            console.log($scope.data);
         }
     }
 ]);

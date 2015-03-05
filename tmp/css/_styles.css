@@ -1796,7 +1796,7 @@ html {
   .row-12-12.responsive {
     width: 98%; } }
 
-label, button, input[type=url], input[type=text] {
+label, button, select, input[type=url], input[type=text] {
   font-size: 1em; }
 
 form ::-webkit-input-placeholder {
@@ -1815,7 +1815,8 @@ form .button-cancel, form .button-submit {
 form fieldset {
   margin-top: 40px; }
   form fieldset legend {
-    font-size: 1.8em; }
+    font-size: 40px;
+    line-height: 40px; }
   form fieldset input[type=url], form fieldset input[type=text] {
     color: #fff;
     width: 100%;
@@ -1865,17 +1866,23 @@ form fieldset {
   -o-transition: height 400ms cubic-bezier(.14, .39, .31, 1);
   transition: height 400ms cubic-bezier(.14, .39, .31, 1); }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 980px) {
   header h1 {
-    font-size: 2em; } }
-
-@media screen and (min-width: 680px) and (max-width: 980px) {
-  header h1 {
-    font-size: 5em; } }
+    font-size: 2em; }
+  .list-inline {
+    margin-bottom: 20px; }
+    .list-inline .item {
+      display: block; }
+    .list-inline .item {
+      margin-left: 20px; }
+      .list-inline .item:first-child {
+        margin-left: 0px; } }
 
 @media screen and (min-width: 980px) {
   header h1 {
-    font-size: 5em; } }
+    font-size: 5em; }
+  .list-inline .item {
+    display: inline-block; } }
 
 body {
   background-color: #57bcf9;
@@ -1953,6 +1960,16 @@ header {
     header h1 span {
       font-family: 'latoblack'; }
 
+form fieldset .input-select select {
+  width: 100%;
+  padding: 10px; }
+form fieldset .input-select::before {
+  position: absolute;
+  color: #000;
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  right: 0px; }
 form fieldset .input-range {
   width: 100%;
   padding: 10px;
@@ -2057,24 +2074,28 @@ form fieldset .item.error {
   .button-list button, .button-list-right button, .button-list .button, .button-list-right .button {
     margin-right: 10px;
     margin-left: 0; }
-  .button-list .button-icon:first-child, .button-list-right .button-icon:first-child {
+  .button-list.button-rounded .button-icon:first-child, .button-rounded.button-list-right .button-icon:first-child {
     border-radius: 40px 0 0 40px; }
-  .button-list .button-icon:last-child, .button-list-right .button-icon:last-child {
+  .button-list.button-rounded .button-icon:last-child, .button-rounded.button-list-right .button-icon:last-child {
     border-radius: 0 40px 40px 0; }
 
 .button-icon {
+  float: left;
   display: inline-block;
   width: 40px;
   height: 40px;
   line-height: 40px;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.2); }
+  .button-icon.button-rounded {
+    border-radius: 40px; }
 
-.button-list-right {
+.button-right, .button-list-right {
   justify-content: flex-end; }
-  .button-list-right button, .button-list-right .button {
-    margin-right: 0;
-    margin-left: 10px; }
+
+.button-list-right button, .button-list-right .button {
+  margin-right: 0;
+  margin-left: 10px; }
 
 .tags-list {
   margin-top: 10px;
@@ -2133,12 +2154,10 @@ form fieldset .item.error {
 .list-inline {
   list-style: none;
   line-height: 80px; }
-  .list-inline .item {
-    display: inline-block; }
-    .list-inline .item a {
-      margin-right: 5px;
-      opacity: .6; }
-      .list-inline .item a:hover, .list-inline .item a:active {
-        opacity: 1; }
+  .list-inline .item a {
+    margin-right: 5px;
+    opacity: .6; }
+    .list-inline .item a:hover, .list-inline .item a:active {
+      opacity: 1; }
   .list-inline i {
     padding: 0 5px; }
