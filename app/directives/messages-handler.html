@@ -1,5 +1,0 @@
-<div class="messages-handler" ng-class="{ 'full-screen': isFullScreen() }" ng-if="hasMessages">
-    <div class="content" ng-class="{ 'errors': isError(), 'success': isSuccess(), }">
-        <p ng-repeat="message in messages" >{{ message.content | translate: message.options }}</p>
-    </div>
-</div>
