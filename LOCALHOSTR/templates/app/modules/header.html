@@ -1,0 +1,6 @@
+<header>
+    <h1>LOCALHOST<span>R</span></h1>
+    <p>
+        <send-by-email text="{{ data.ipAddr }}" title="{{ 'SEND_IP_BY_EMAIL' | translate }}" subject="{{ 'SEND_IP_BY_EMAIL_SUBJECT' | translate }}" body="{{ 'SEND_IP_BY_EMAIL_BODY' | translate: { text: data.ipAddr } }}"></send-by-email>
+    </p>
+</header>

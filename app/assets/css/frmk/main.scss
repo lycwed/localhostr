@@ -16,7 +16,7 @@ $gutter-small: 10px;
 $gutter-medium: 20px;
 $gutter-large: 40px;
 
-$inline-height: 80px;
+$inline-height: $gutter-large * 2;
 
 $transition-style: 400ms cubic-bezier(.14,.39,.31,1);
 

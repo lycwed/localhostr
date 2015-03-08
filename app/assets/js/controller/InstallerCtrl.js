@@ -14,7 +14,7 @@ app.controller('InstallerCtrl', ['$scope', '$rootScope', '$state', 'Installer', 
             },
             menu: {
                 php_my_admin: {
-                    href: { required: true, label:'PHP_MY_ADMIN_LINK', value: "" }
+                    href: { required: false, label:'PHP_MY_ADMIN_LINK', value: "" }
                 }
             }
         };
@@ -29,7 +29,7 @@ app.controller('InstallerCtrl', ['$scope', '$rootScope', '$state', 'Installer', 
 
         $scope.submit = function() {
             var form = Form.validate($scope.fields, $scope.data);
-            console.log(form);
+            form.values.languages = $scope.data.languages;
             if (form.isValid) {
                 AppResource.update('installer', form.values).then(function() {
                     $state.reload();
@@ -53,7 +53,7 @@ app.controller('InstallerCtrl', ['$scope', '$rootScope', '$state', 'Installer', 
         };
 
         if (Installer.status === 200) {
-            $scope.languages = Installer.data.response.languages;
+            $scope.data.languages = Installer.data.response.languages;
             Form.setData($scope.data, $scope.fields, Installer.data.response);
         }
     }

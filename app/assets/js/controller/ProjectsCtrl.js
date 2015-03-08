@@ -1,54 +1,51 @@
 'use strict';
 
-app.controller('ProjectsCtrl', ['$scope', '$state', '$timeout', 'AppResource', 'Installer',
-    function ($scope, $state, $timeout, AppResource, Installer) {
+app.controller('ProjectsCtrl', ['$scope', '$window', '$state', '$timeout', 'AppResource', 'Installer',
+    function ($scope, $window, $state, $timeout, AppResource, Installer) {
         var timer = null;
         var path = ($state.params.path === 'all') ? '' : $state.params.path;
-        var realPaths = [];
         var searching = false;
         var research = Installer.data.response.research;
-        var options = (path === '') ? {} : {
-            'path': path
-        };
+        var changePath = function(path) {
+            if (path !== '') {
+                $scope.loading.inProgress = true;
+                var urls = [];
+                var paths = path.split('/');
+                var separator = encodeURIComponent('/');
+                var realPaths = [];
 
-        if ($state.params.path !== 'all') {
-            var urls = [];
-            var paths = $state.params.path.split('/');
-            var separator = encodeURIComponent('/');
-
-            for (var i = 0; i < paths.length; i++) {
-                if (paths.hasOwnProperty(i)) {
-                    urls.push(paths[i]);
-                    realPaths.push({
-                        name: paths[i],
-                        path: urls.join(separator)
-                    });
+                for (var i = 0; i < paths.length; i++) {
+                    if (paths.hasOwnProperty(i) && paths[i] !== '') {
+                        urls.push(paths[i]);
+                        realPaths.push({
+                            name: paths[i],
+                            path: urls.join(separator)
+                        });
+                    }
                 }
             }
-        }
+
+            AppResource.get('projects', { path: path }).then(function(service) {
+                var projects = service.data.response;
+                if (projects.length > 0) {
+                    $scope.data.breadcrumb = realPaths;
+                    $scope.data.projects = projects;
+                }
+                $scope.loading.inProgress = false;
+            });
+        };
 
         $scope.popover = null;
         $scope.loading = {
-            inProgress: false
+            inProgress: true
         };
         $scope.data = {
             projects: [],
             research: {},
             options: Installer.data.response.menu,
-            breadcrumb: realPaths
+            breadcrumb: [],
+            path: path
         };
-
-        AppResource.get('projects', options).then(function(service) {
-            var projects = service.data.response;
-            if (projects.length > 0) {
-                $scope.data.projects = projects;
-            } else {
-                if ($state.params.path === 'all') {
-                    $state.go('installer');
-                }
-            }
-            $scope.loading.finish = true;
-        });
 
         $scope.isSearching = function() {
             return searching;
@@ -57,17 +54,27 @@ app.controller('ProjectsCtrl', ['$scope', '$state', '$timeout', 'AppResource', '
             $scope.popover = ($scope.popover !== name) ? name : null;
             if ($scope.popover) {
                 $timeout(function() {
-                    angular.element(document.querySelector('#inputSearch')).focus();
+                    document.getElementById('inputSearch').focus();
                 }, 500);
             }
         };
         $scope.isEmpty = function() {
-            return ($scope.data.breadcrumb.length === 0);
+            return ($scope.data.breadcrumb === undefined || $scope.data.breadcrumb.length === 0);
+        };
+        $scope.open = function(item) {
+            var itemPath = decodeURIComponent(item.path);
+            $state.transitionTo('app.projects', { 'path': itemPath }, { location: true, inherite: true, notify: false });
+            $scope.$broadcast('change:path', itemPath);
         };
 
+        $scope.$on('change:path', function(event, path) {
+            changePath(path);
+        });
         $scope.$watch('data.search', function(value) {
             $timeout.cancel(timer);
             if (value && value.length >= parseInt(research.chars)) {
+                searching = true;
+                $scope.data.research.results_nb = '...';
                 $scope.loading.inProgress = true;
 
                 timer = $timeout(function() {
@@ -100,17 +107,17 @@ app.controller('ProjectsCtrl', ['$scope', '$state', '$timeout', 'AppResource', '
                     }
 
                     AppResource.get('search', params).then(function(service) {
-                        searching = true;
                         $scope.loading.inProgress = false;
                         $scope.data.research.results = service.data.response;
                         $scope.data.research.results_nb = service.data.response.length;
+                        $scope.loading.inProgress = false;
                         return;
                     });
                 }, parseInt(research.time));
             } else {
                 searching = false;
-                $scope.loading.inProgress = false;
             }
         });
+        changePath(path);
     }
 ]);

@@ -1,4 +1,11 @@
-tmp/**/*
+.gitignore
+.jshintignore
+.jshintrc
+bower.json
+gulpfile.js
+package.json
+/tmp
+/app
 /master
 /node_modules
 /bower_components

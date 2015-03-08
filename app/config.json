@@ -1,20 +1,21 @@
 {
     "languages": [
         {
-            "label": "ENGLISH",
-            "value": "en_US"
+            "name": "ENGLISH",
+            "key": "en_US"
         },
         {
-            "label": "FRENCH",
-            "value": "fr_FR"
+            "name": "FRENCH",
+            "key": "fr_FR"
         }
     ],
     "app": {
-        "language": "fr_FR",
+        "language": "en_US",
         "path": "/Users/brahmanimal/Sites",
         "installed": true,
         "ignores": [
-            "LOCALHOSTR"
+            "LOCALHOSTR",
+            "index.php"
         ]
     },
     "menu": {

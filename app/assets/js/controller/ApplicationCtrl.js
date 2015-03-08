@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ApplicationCtrl', ['$translate', 'Installer',
-  function ($translate, Installer) {
+app.controller('ApplicationCtrl', ['$scope', '$translate', '$state', 'Installer', 'APP',
+  function ($scope, $translate, $state, Installer, APP) {
 
     // $scope.$root.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){
     //   console.log(event, unfoundState, fromState, fromParams);
@@ -18,6 +18,10 @@ app.controller('ApplicationCtrl', ['$translate', 'Installer',
     // $scope.$root.$on('viewContentLoaded', function(){
     //   console.log('view loaded');
     // });
+
+    $scope.data = {
+      ipAddr: APP.ipAddr
+    };
 
     if (Installer.data.status === 'success') {
       var language = Installer.data.response.app.language;

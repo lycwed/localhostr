@@ -86,6 +86,10 @@
     "globals"       : {
         "angular": true,
         "app": true,
-        "API_URL": true
+        "API": true,
+        "APP": true,
+        "IP_ADDR": true,
+        "API_URL": true,
+        "APP_FOLDER": true
     }
 }
