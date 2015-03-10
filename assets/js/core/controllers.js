@@ -105,6 +105,8 @@ app.controller('ProjectsCtrl', ['$scope', '$window', '$state', '$timeout', 'AppR
         var searching = false;
         var research = Installer.data.response.research;
         var changePath = function(path) {
+            $scope.togglePopover(null);
+
             if (path !== '') {
                 $scope.loading.inProgress = true;
                 var urls = [];
@@ -154,6 +156,9 @@ app.controller('ProjectsCtrl', ['$scope', '$window', '$state', '$timeout', 'AppR
                 $timeout(function() {
                     document.getElementById('inputSearch').focus();
                 }, 500);
+            } else {
+                searching = false;
+                $scope.data.search = '';
             }
         };
         $scope.isEmpty = function() {
@@ -187,6 +192,10 @@ app.controller('ProjectsCtrl', ['$scope', '$window', '$state', '$timeout', 'AppR
                     };
 
                     if (options.length > 1) {
+
+                        if (options.indexOf('-a') > -1) {
+                            params.path = '';
+                        }
                         if (options.indexOf('-s') > -1) {
                             params.start = 1;
                         }

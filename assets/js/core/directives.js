@@ -132,7 +132,7 @@ app
           if (email !== '' && email !== null) {
             $window.location = "mailto:" + email + "?subject=" + encodeURIComponent($scope.subject) + "&body=" + encodeURIComponent($scope.body);
           }
-        }
+        };
       }]
     };
   }
@@ -178,7 +178,6 @@ app
       });
 
       $element.on('mousedown', function(event) {
-        // Prevent default dragging of selected content
         event.preventDefault();
         startX = event.pageX - x;
         startY = event.pageY - y;
