@@ -131,6 +131,7 @@ app.controller('ProjectsCtrl', ['$scope', '$window', '$state', '$timeout', 'AppR
                     $scope.data.breadcrumb = realPaths;
                     $scope.data.projects = projects;
                 }
+                window.scrollTo(0, document.querySelector('#breadcrumb').offsetTop - 20);
                 $scope.loading.inProgress = false;
             });
         };
