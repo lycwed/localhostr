@@ -1,5 +1,10 @@
 <div class="tiles">
-    <div ng-repeat="item in collection" ng-click="open(item);" class="tile row-4-12 responsive" ng-if="! loading.inProgress">
+    <div class="row-12-12" ng-if="loading.inProgress">
+        <p class="text-center">
+            {{ 'LOADING_IN_PROGRESS' | translate }}
+        </p>
+    </div>
+    <div ng-repeat="item in collection" ng-click="open(item);" class="tile row-4-12 responsive">
         <div class="row-4-12">
             <i class="icon-{{ item.type }}"></i>
         </div>
@@ -11,11 +16,6 @@
             <p class="bolder">{{ item.name }}</p>
             <p>{{ 'SIZE' | translate }} : {{ item.size | readableFileSize }}</p>
         </a>
-    </div>
-    <div ng-if="loading.inProgress" class="row-12-12">
-        <p class="text-center">
-            {{ 'LOADING_IN_PROGRESS' | translate }}
-        </p>
     </div>
     <div ng-if="! loading.inProgress && collection.length === 0" class="row-12-12">
         <p class="text-center">
