@@ -1,0 +1,32 @@
+{
+    "languages": [
+        {
+            "name": "ENGLISH",
+            "key": "en_US"
+        },
+        {
+            "name": "FRENCH",
+            "key": "fr_FR"
+        }
+    ],
+    "app": {
+        "language": "en_US",
+        "path": "",
+        "installed": false,
+        "ignores": [
+            "LOCALHOSTR",
+            "index.php"
+        ]
+    },
+    "menu": {
+        "php_my_admin": {
+            "title": "PHP my admin",
+            "href": "",
+            "icon": "icon-database"
+        }
+    },
+    "research": {
+        "chars": "2",
+        "time": "1000"
+    }
+}

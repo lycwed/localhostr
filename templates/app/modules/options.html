@@ -1,0 +1,22 @@
+<nav class="button-list-right button-rounded container-mt" id="options">
+    <div class="button-icon has-popover-bottom" ng-class="{ 'show': popover === 'search' }">
+        <a ng-click="togglePopover('search');" class="popover-trigger" title="{{ 'SEARCH_ITEM' | translate }}">
+            <i class="icon-search"></i>
+        </a>
+        <div class="item-popover-rounded">
+            <div class="item input-text">
+                <input type="text" ng-model="data.search" id="inputSearch" placeholder="{{ 'SEARCH_INF0' | translate }}">
+            </div>
+        </div>
+    </div>
+
+    <a ui-sref="app.installer" class="button-icon" title="{{ 'CHANGE_CONFIGURATION' | translate }}">
+        <i class="icon-cog"></i>
+    </a>
+    <a ui-sref="app.phpinfo" class="button-icon" title="{{ 'PHP_INFOS' | translate }}">
+        <i class="icon-info"></i>
+    </a>
+    <a href="{{ item.href }}" class="button-icon" title="{{ item.title }}" target="blank" ng-if="item.href !== ''" ng-repeat="item in data.options">
+        <i class="{{ item.icon }}"></i>
+    </a>
+</nav>

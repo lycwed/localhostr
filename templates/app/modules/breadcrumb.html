@@ -1,0 +1,19 @@
+<nav id="breadcrumb">
+    <ul class="list-inline">
+        <li class="item">
+            <i ng-class="{ 'icon-sitemap': ! isSearching(), 'icon-search': isSearching() }"></i>
+            <a ui-sref="app.projects({ path: 'all' })" title="{{ 'ACCESS_TO' | translate: { item: item.name } }}" ng-if="! isEmpty() && ! isSearching()">
+                {{ 'PROJECTS_TITLE' | translate }}
+            </a>
+            <span ng-if="isEmpty() && ! isSearching()">{{ 'PROJECTS_TITLE' | translate }}</span>
+            <span ng-if="isSearching();">{{ 'RESEARCH_TITLE' | translate }} : {{ 'ITEMS_FOUND' | translate: { items: data.research.results_nb } }}</span>
+        </li>
+        <li class="item" ng-repeat="item in data.breadcrumb" ng-if="! isSearching();">
+            <i class=" icon-right-open"></i>
+            <a ng-click="open(item);" title="{{ 'ACCESS_TO' | translate: { item: item.name } }}" ng-if="! $last">
+                {{ item.name }}
+            </a>
+            <span ng-if="$last">{{ item.name }}</span>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,12 @@
+<div ng-class="{ 'active': active }" id="sendByEmail">
+    <div title="{{ title }}" class="button button-icon-right" ng-click="active = !active">
+        http://{{ text }}<i class="icon icon-paste"></i>
+    </div>
+    <div class="bubble" ng-click="active = !active">
+        <p>{{ title }}</p>
+        <!-- <div class="input-inset">
+            <input type="text" ng-model="email" placeholder="votre email">
+            <a ng-disabled="!email" class="icon icon-right-big" ng-click="send()"></a>
+        </div> -->
+    </div>
+</div>

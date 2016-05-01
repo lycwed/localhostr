@@ -1,0 +1,33 @@
+<div class="tiles">
+    <div class="row-12-12" ng-if="loading.inProgress">
+        <p class="text-center">
+            {{ 'LOADING_IN_PROGRESS' | translate }}
+        </p>
+    </div>
+    <div ng-repeat="item in collection" class="tile row-4-12 responsive">
+        <div ng-click="open(item);" class="row" ng-if="item.type === 'folder'">
+            <div class="row-4-12">
+                <i class="icon-{{ item.type }}"></i>
+            </div>
+            <div class="row-8-12">
+                <p class="bolder">{{ item.name }}</p>
+                <p>{{ 'ITEMS_NB' | translate: { 'items': item.size } }}</p>
+            </div>
+        </div>
+        <a target-it="_blank" href="{{ item.url }}" title="{{ item.type }} {{ item.name }}" class="row" ng-if="item.type !== 'folder'">
+            <div class="row-4-12">
+                <i class="icon-{{ item.type }}"></i>
+            </div>
+            <div  class="row-8-12">
+                <p class="bolder">{{ item.name }}</p>
+                <p>{{ 'SIZE' | translate }} : {{ item.size | readableFileSize }}</p>
+            </div>
+        </a>
+    </div>
+    <div ng-if="! loading.inProgress && collection.length === 0" class="row-12-12">
+        <p class="text-center">
+            <i class="icon-attention-circled"></i>
+            {{ 'NO_ITEMS_FOUND' | translate }}
+        </p>
+    </div>
+</div>
