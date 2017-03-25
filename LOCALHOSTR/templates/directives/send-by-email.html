@@ -1,12 +1,8 @@
-<div ng-class="{ 'active': active }" id="sendByEmail">
-    <div title="{{ title }}" class="button button-icon-right" ng-click="active = !active">
-        http://{{ text }}<i class="icon icon-paste"></i>
-    </div>
-    <div class="bubble" ng-click="active = !active">
-        <p>{{ title }}</p>
-        <!-- <div class="input-inset">
-            <input type="text" ng-model="email" placeholder="votre email">
-            <a ng-disabled="!email" class="icon icon-right-big" ng-click="send()"></a>
-        </div> -->
+<div ng-class="{ 'active': copySuccess }" id="sendByEmail">
+    <p class="legend">{{ title }}</p>
+    <button class="button button-icon-right" clipboard text="text" on-copied="copySuccess = !copySuccess" on-error="copyFailed = !copyFailed">{{ text }}<i class="icon icon-paste"></i>
+    </button>
+    <div class="bubble" ng-click="copySuccess = !copySuccess">
+        <p>{{ 'SEND_IP_BY_EMAIL_SUCCESS' | translate }}</p>
     </div>
 </div>

@@ -1,7 +1,20 @@
 <?php
 
+function getLanIpAddr() {
+  $lanIpAddr = null;
+  exec("ifconfig en1 inet", $output);
+
+  foreach ($output as $value) {
+    if (strpos($value, 'inet') !== false) {
+      preg_match('/[(0-9.)]+/', $value, $matches);
+      $lanIpAddr = count($matches) ? $matches[0] : null;
+    }
+  }
+  return $lanIpAddr;
+}
+
 define('ROOT_DIR', __DIR__);
-define('IP_ADDR', gethostbyname(trim(`hostname`)));
+define('IP_ADDR', getLanIpAddr());
 if (is_dir(ROOT_DIR . '/LOCALHOSTR')) {
     define('APP_FOLDER', 'LOCALHOSTR');
 } else {

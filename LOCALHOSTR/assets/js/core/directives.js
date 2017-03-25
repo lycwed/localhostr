@@ -128,6 +128,7 @@ app
       templateUrl: APP_FOLDER + '/templates/directives/send-by-email.html',
       controller: ['$scope', '$window', function ($scope, $window) {
         $scope.email = '';
+        $scope.supported = false;
         $scope.send = function() {
           if ($scope.email !== '' && $scope.email !== null) {
             $window.location = "mailto:" + $scope.email + "?subject=" + encodeURIComponent($scope.subject) + "&body=" + encodeURIComponent($scope.body);

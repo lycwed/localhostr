@@ -29,7 +29,8 @@
     "BACK_TO_PROJECTS":"Revenir aux projets",
     "LANGUAGE_NAME":"Nom de la langue",
     "LANGUAGE_KEY":"Clef de la langue",
-    "SEND_IP_BY_EMAIL":"Copie cette adresse sur tes appareils mobile pour tester tes projets (tu dois être connecté sur le même réseau).",
+    "SEND_IP_BY_EMAIL":"Copie cette adresse sur tes appareils mobile pour tester tes projets (tu dois être connecté sur le même réseau WIFI).",
+    "SEND_IP_BY_EMAIL_SUCCESS":"L'url est copier dans le presse-papier !",
     "SEND_IP_BY_EMAIL_SUBJECT":"LOCALHOST'R web app",
     "SEND_IP_BY_EMAIL_BODY":"Cliquez ici : http://{{ text }} pour ouvrir LOCALHOST'R !"
 }

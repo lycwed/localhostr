@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('localhostr', ['ui.router', 'pascalprecht.translate']);
+var app = angular.module('localhostr', ['ui.router', 'pascalprecht.translate', 'angular-clipboard']);
 
 app
 

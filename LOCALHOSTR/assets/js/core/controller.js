@@ -20,7 +20,7 @@ app.controller('ApplicationCtrl', ['$scope', '$translate', '$state', 'Installer'
     // });
 
     $scope.data = {
-      ipAddr: APP.ipAddr
+      ipAddr: 'http://' + APP.ipAddr
     };
 
     if (Installer.data.status === 'success') {
