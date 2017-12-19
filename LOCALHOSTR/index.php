@@ -1,16 +1,15 @@
 <?php
 
 function getLanIpAddr() {
-  $lanIpAddr = null;
-  exec("ifconfig en1 inet", $output);
-
-  foreach ($output as $value) {
-    if (strpos($value, 'inet') !== false) {
-      preg_match('/[(0-9.)]+/', $value, $matches);
-      $lanIpAddr = count($matches) ? $matches[0] : null;
+    $lanIpAddr = null;
+    exec("arp -a", $output);
+    if (is_array($output)) {
+        preg_match('/\((.*)\)/', $output[0], $ipInfos);
+        $lanIpAddr = $ipInfos[1];
+        // var_dump($lanIpAddr);
+        // exit;
     }
-  }
-  return $lanIpAddr;
+    return $lanIpAddr;
 }
 
 define('ROOT_DIR', __DIR__);
